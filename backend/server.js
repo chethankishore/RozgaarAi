@@ -34,7 +34,7 @@ app.use("/uploads", express.static("uploads"));
 connectDB();
 
 app.use(cors({
-  origin: ["http://localhost:5173", "https://rozgaar-ai-seven.vercel.app/"],
+  origin: ["http://localhost:5173", "https://rozgaar-ai-seven.vercel.app"],
   credentials: true,
 }));
 // Core Middleware
