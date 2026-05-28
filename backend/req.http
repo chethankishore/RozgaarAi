@@ -1,0 +1,69 @@
+### ─── Variables ─────────────────────────────────────────────────────────────
+@baseUrl = http://localhost:5000/api
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YjhmMGMzYjBjNWM3YTUwZjJiOGVlOSIsImlhdCI6MTc3MzczOTkzMiwiZXhwIjoxNzczNzQwODMyfQ.drvhNrer3osCy0jPT7ANT1BieSM9CEqboeNDcvnxqYc
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "name": "Alekhya",
+  "email": "alekhya@gmail.com",
+  "password": "123456"
+}
+
+
+### ─── LOGIN ──────────────────────────────────────────────────────────────────
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "alekhya@gmail.com",
+  "password": "123456"
+}
+
+
+### ─── GET ME (protected) ────────────────────────────────────────────────────
+GET {{baseUrl}}/auth/me
+Authorization: Bearer {{accessToken}}
+
+
+### ─── LOGOUT (protected) ────────────────────────────────────────────────────
+POST {{baseUrl}}/auth/logout
+Authorization: Bearer {{accessToken}}
+
+
+### ─── UPLOAD RESUME (protected) ────────────────────────────────────────────
+### ─── UPLOAD RESUME (protected) ────────────────────────────────────────────
+POST {{baseUrl}}/resume/upload
+Authorization: Bearer {{accessToken}}
+Content-Type: multipart/form-data; boundary=----Boundary
+
+------Boundary
+Content-Disposition: form-data; name="resume"; filename="chethan_Haier.pdf"
+Content-Type: application/pdf
+
+< C:/Users/chethan/Downloads/chethan_Haier.pdf
+------Boundary--
+
+### ─── GET MY RESUMES ───────────────────────────────────────────────────────
+GET {{baseUrl}}/resume/my
+Authorization: Bearer {{accessToken}}
+
+
+### ─── GET SINGLE RESUME ────────────────────────────────────────────────────
+GET {{baseUrl}}/resume/PUT_RESUME_ID_HERE
+Authorization: Bearer {{accessToken}}
+
+
+### ─── HEALTH CHECK ───────────────────────────────────────────────────────────
+GET http://localhost:5000/
+
+
+###testing upload
+GET http://localhost:5000/api/resume/test
+
+###
+POST http://localhost:5000/api/resume/upload
+Authorization: Bearer {{accessToken}}
+
+
+resume=@C:/Users/chethan/Downloads/chethan_Haier.pdf
